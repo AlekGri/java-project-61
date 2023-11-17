@@ -1,0 +1,15 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'hexlet.code.App'
+}
+
+compileJava {
+    options.release = 20
+}
