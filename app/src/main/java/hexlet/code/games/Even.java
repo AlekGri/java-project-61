@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import java.util.Scanner;
 public class Even {
@@ -30,18 +30,18 @@ public class Even {
         System.out.println("Question: " + random);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
-        String userChoice = scanner.next();
+        String userAnswer = scanner.next();
         boolean isRandomEven = isEven(random);
         String correctAnswer = "no";
         if (isRandomEven) {
             correctAnswer = "yes";
         }
 
-        if ((userChoice.equals("yes") && isRandomEven) || (userChoice.equals("no") && !isRandomEven)) {
+        if ((userAnswer.equals("yes") && isRandomEven) || (userAnswer.equals("no") && !isRandomEven)) {
             count += 1;
             System.out.println("Correct!");
         } else {
-            System.out.println("'" + userChoice + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
+            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
                     "Let's try again, " + userName + "!");
         }
         return count;
