@@ -1,29 +1,25 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Scanner;
 
 public class Calc {
     public static final int MAX_RIGHT_ANSWERS = 3;
-    public static String userName;
+    public static final String QUESTION = "What is the result of the expression?";
 
     public static void startCalc() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
-        Scanner scanner = new Scanner(System.in);
-        userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
+        Engine.greeting(QUESTION);
 
-        System.out.println("What is the result of the expression?");
         int countAnswer = 0;
         while (true) {
             int count = getRound();
             countAnswer += count;
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
-                System.out.println("Congratulations, " + userName  + "!");
+                System.out.println("Congratulations, " + Engine.userName  + "!");
                 break;
             }
         }
-        scanner.close();
     }
 
     public static int getRound() {
@@ -45,7 +41,7 @@ public class Calc {
             System.out.println("Correct!");
         } else {
             System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                    "Let's try again, " + userName + "!");
+                    "Let's try again, " + Engine.userName + "!");
         }
 
         return count;

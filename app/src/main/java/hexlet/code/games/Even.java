@@ -1,27 +1,23 @@
 package hexlet.code.games;
 
 import java.util.Scanner;
+import hexlet.code.Engine;
 public class Even {
     public static final int MAX_RIGHT_ANSWERS = 3;
-    public static String userName;
-    public static void startEven() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
-        Scanner scanner = new Scanner(System.in);
-        userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
+    public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+    public static void startEven() {
+        Engine.greeting(QUESTION);
+
         int countAnswer = 0;
         while (true) {
             int count = getRound();
             countAnswer += count;
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
-                System.out.println("Congratulations, " + userName  + "!");
+                System.out.println("Congratulations, " + Engine.userName  + "!");
                 break;
             }
         }
-        scanner.close();
     }
 
     public static int getRound() {
@@ -42,7 +38,7 @@ public class Even {
             System.out.println("Correct!");
         } else {
             System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                    "Let's try again, " + userName + "!");
+                    "Let's try again, " + Engine.userName + "!");
         }
         return count;
     }
