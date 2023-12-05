@@ -1,12 +1,14 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
 import hexlet.code.Engine;
-public class Even {
-    public static final int MAX_RIGHT_ANSWERS = 3;
-    public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void startEven() {
+import java.util.Scanner;
+
+public class GCD {
+    public static final int MAX_RIGHT_ANSWERS = 3;
+    public static final String QUESTION = "Find the greatest common divisor of given numbers.";
+
+    public static void gcd() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
@@ -21,34 +23,49 @@ public class Even {
     }
 
     public static int getRound() {
-        int random = getRandom(1, 100);
-        System.out.println("Question: " + random);
+        int firstNum = getRandom(1, 100);
+        int secondNum = getRandom(1, 100);
+
+        while (firstNum == secondNum) {
+            secondNum = getRandom(1, 100);
+        }
+
+        System.out.println("Question: " + firstNum + " " + secondNum);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.next();
 
         int count = 0;
-        boolean isRandomEven = isEven(random);
-        String correctAnswer = "no";
-        if (isRandomEven) {
-            correctAnswer = "yes";
-        }
+        int correctAnswer = getGCD(firstNum, secondNum);
 
-        if ((userAnswer.equals("yes") && isRandomEven) || (userAnswer.equals("no") && !isRandomEven)) {
+        if (userAnswer.equals(String.valueOf(correctAnswer))) {
             count += 1;
             System.out.println("Correct!");
         } else {
             System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
                     "Let's try again, " + Engine.userName + "!");
         }
+
         return count;
+    }
+
+    public static int getGCD(int x, int y) {
+        if (y > x) {
+            int temp = y;
+            y = x;
+            x = temp;
+        }
+
+        while (y != 0) {
+            int remainder = x % y;
+            x = y;
+            y = remainder;
+        }
+        return x;
+
     }
 
     public static int getRandom (int min, int max){
         return (int) (Math.random() * (max - min)) + min;
-    }
-
-    public static boolean isEven (int num) {
-        return num % 2 == 0;
     }
 }
