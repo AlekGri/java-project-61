@@ -4,9 +4,9 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 
-public class Calc {
+public class Prime {
     public static final int MAX_RIGHT_ANSWERS = 3;
-    public static final String QUESTION = "What is the result of the expression?";
+    public static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void startGame() {
         Engine.greeting(QUESTION);
@@ -22,37 +22,41 @@ public class Calc {
         }
     }
 
-    public static int doRound() {
-        int x = Engine.getRandom(1, 100);
-        int y = Engine.getRandom(1, 100);
-        String[] Signs = {"+", "-", "*"};
-        String sign = Signs[Engine.getRandom(0, Signs.length)];
-        System.out.println("Question: " + x + sign + y);
-
+    private static int doRound() {
+        int random = Engine.getRandom(1, 100);
+        System.out.println("Question: " + random);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.next();
 
         int count = 0;
-        int correctAnswer = calculate(x, y, sign);
+        boolean isRandomPrime = isPrime(random);
+        String correctAnswer = "no";
+        if (isRandomPrime) {
+            correctAnswer = "yes";
+        }
 
-        if (userAnswer.equals(String.valueOf(correctAnswer))) {
+        if ((userAnswer.equals("yes") && isRandomPrime) || (userAnswer.equals("no") && !isRandomPrime)) {
             count += 1;
             System.out.println("Correct!");
         } else {
             System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
                     "Let's try again, " + Engine.userName + "!");
         }
-
         return count;
     }
 
-    public static int calculate (int x, int y, String sign) {
-        return switch (sign) {
-            case "+" -> x + y;
-            case "-" -> x - y;
-            case "*" -> x * y;
-            default -> throw new IllegalStateException("Unexpected value: " + sign);
-        };
+    public static boolean isPrime (int num) {
+        if (num == 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i += 1) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

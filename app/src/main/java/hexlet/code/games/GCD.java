@@ -8,12 +8,12 @@ public class GCD {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Find the greatest common divisor of given numbers.";
 
-    public static void gcd() {
+    public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = getRound();
+            int count = doRound();
             countAnswer += count;
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
@@ -22,12 +22,12 @@ public class GCD {
         }
     }
 
-    public static int getRound() {
-        int firstNum = getRandom(1, 100);
-        int secondNum = getRandom(1, 100);
+    public static int doRound() {
+        int firstNum = Engine.getRandom(1, 100);
+        int secondNum = Engine.getRandom(1, 100);
 
         while (firstNum == secondNum) {
-            secondNum = getRandom(1, 100);
+            secondNum = Engine.getRandom(1, 100);
         }
 
         System.out.println("Question: " + firstNum + " " + secondNum);
@@ -63,9 +63,5 @@ public class GCD {
         }
         return x;
 
-    }
-
-    public static int getRandom (int min, int max){
-        return (int) (Math.random() * (max - min)) + min;
     }
 }

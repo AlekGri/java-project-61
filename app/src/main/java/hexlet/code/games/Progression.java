@@ -13,12 +13,12 @@ public class Progression {
     public static final int MAX_STEP = 10;
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
-    public static void progression() {
+    public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = getRound();
+            int count = doRound();
             countAnswer += count;
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
@@ -27,13 +27,13 @@ public class Progression {
         }
     }
 
-    public static int getRound() {
-        int startNumber = getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
-        int progressionLength = getRandom(MIN_LENGTH, MAX_LENGTH);
-        int step = getRandom(MIN_STEP, MAX_STEP);
+    public static int doRound() {
+        int startNumber = Engine.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
+        int progressionLength = Engine.getRandom(MIN_LENGTH, MAX_LENGTH);
+        int step = Engine.getRandom(MIN_STEP, MAX_STEP);
         int[] progression = getProgression(startNumber, progressionLength, step);
 
-        int indexToHide = getRandom(0, progressionLength - 1);
+        int indexToHide = Engine.getRandom(0, progressionLength - 1);
 
         var question = new StringBuilder();
         question.append("Question: ");
@@ -72,9 +72,5 @@ public class Progression {
         }
 
         return progression;
-    }
-
-    public static int getRandom (int min, int max){
-        return (int) (Math.random() * (max - min)) + min;
     }
 }

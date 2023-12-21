@@ -6,12 +6,12 @@ public class Even {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void startEven() {
+    public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = getRound();
+            int count = doRound();
             countAnswer += count;
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
@@ -20,8 +20,8 @@ public class Even {
         }
     }
 
-    public static int getRound() {
-        int random = getRandom(1, 100);
+    public static int doRound() {
+        int random = Engine.getRandom(1, 100);
         System.out.println("Question: " + random);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
@@ -42,10 +42,6 @@ public class Even {
                     "Let's try again, " + Engine.userName + "!");
         }
         return count;
-    }
-
-    public static int getRandom (int min, int max){
-        return (int) (Math.random() * (max - min)) + min;
     }
 
     public static boolean isEven (int num) {
