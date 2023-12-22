@@ -7,14 +7,24 @@ import java.util.Scanner;
 public class GCD {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Find the greatest common divisor of given numbers.";
-
+    public static String userAnswer;
+    public static int correctAnswer;
     public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = doRound();
-            countAnswer += count;
+            boolean roundResult = doRound();
+
+            if (roundResult) {
+                countAnswer += 1;
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
+                        "Let's try again, " + Engine.userName + "!");
+                break;
+            }
+
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
                 break;
@@ -22,7 +32,7 @@ public class GCD {
         }
     }
 
-    public static int doRound() {
+    public static boolean doRound() {
         int firstNum = Engine.getRandom(1, 100);
         int secondNum = Engine.getRandom(1, 100);
 
@@ -33,20 +43,11 @@ public class GCD {
         System.out.println("Question: " + firstNum + " " + secondNum);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
-        String userAnswer = scanner.next();
+        userAnswer = scanner.next();
 
-        int count = 0;
-        int correctAnswer = getGCD(firstNum, secondNum);
+        correctAnswer = getGCD(firstNum, secondNum);
 
-        if (userAnswer.equals(String.valueOf(correctAnswer))) {
-            count += 1;
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                    "Let's try again, " + Engine.userName + "!");
-        }
-
-        return count;
+        return userAnswer.equals(String.valueOf(correctAnswer));
     }
 
     public static int getGCD(int x, int y) {
