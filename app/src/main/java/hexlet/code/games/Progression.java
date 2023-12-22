@@ -13,13 +13,24 @@ public class Progression {
     public static final int MAX_STEP = 10;
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
+    public static String userAnswer;
+    public static int correctAnswer;
     public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = doRound();
-            countAnswer += count;
+            boolean roundResult = doRound();
+
+            if (roundResult) {
+                countAnswer += 1;
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
+                        "Let's try again, " + Engine.userName + "!");
+                break;
+            }
+
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
                 break;
@@ -27,7 +38,7 @@ public class Progression {
         }
     }
 
-    public static int doRound() {
+    public static boolean doRound() {
         int startNumber = Engine.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
         int progressionLength = Engine.getRandom(MIN_LENGTH, MAX_LENGTH);
         int step = Engine.getRandom(MIN_STEP, MAX_STEP);
@@ -48,20 +59,11 @@ public class Progression {
         System.out.println(question);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
-        String userAnswer = scanner.next();
+        userAnswer = scanner.next();
 
-        int count = 0;
-        int correctAnswer = progression[indexToHide];
+        correctAnswer = progression[indexToHide];
 
-        if (userAnswer.equals(String.valueOf(correctAnswer))) {
-            count += 1;
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                    "Let's try again, " + Engine.userName + "!");
-        }
-
-        return count;
+        return userAnswer.equals(String.valueOf(correctAnswer));
 
     }
 
