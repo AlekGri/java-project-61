@@ -6,13 +6,25 @@ public class Even {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
+    public static String userAnswer;
+    public static String correctAnswer;
+
     public static void startGame() {
         Engine.greeting(QUESTION);
 
         int countAnswer = 0;
         while (true) {
-            int count = doRound();
-            countAnswer += count;
+            boolean roundResult = doRound();
+
+            if (roundResult) {
+                countAnswer += 1;
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
+                        "Let's try again, " + Engine.userName + "!");
+                break;
+            }
+
             if (countAnswer >= MAX_RIGHT_ANSWERS) {
                 System.out.println("Congratulations, " + Engine.userName  + "!");
                 break;
@@ -20,28 +32,20 @@ public class Even {
         }
     }
 
-    public static int doRound() {
+    public static boolean doRound() {
         int random = Engine.getRandom(1, 100);
         System.out.println("Question: " + random);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
-        String userAnswer = scanner.next();
+        userAnswer = scanner.next();
 
-        int count = 0;
         boolean isRandomEven = isEven(random);
-        String correctAnswer = "no";
+        correctAnswer = "no";
         if (isRandomEven) {
             correctAnswer = "yes";
         }
 
-        if ((userAnswer.equals("yes") && isRandomEven) || (userAnswer.equals("no") && !isRandomEven)) {
-            count += 1;
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                    "Let's try again, " + Engine.userName + "!");
-        }
-        return count;
+        return userAnswer.equals(correctAnswer);
     }
 
     public static boolean isEven (int num) {
