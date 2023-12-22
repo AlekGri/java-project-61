@@ -12,24 +12,19 @@ public class Even {
     public static void startGame() {
         Engine.greeting(QUESTION);
 
-        int countAnswer = 0;
-        while (true) {
+        for (int i = 1; i <= MAX_RIGHT_ANSWERS; i++) {
             boolean roundResult = doRound();
 
             if (roundResult) {
-                countAnswer += 1;
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
                         "Let's try again, " + Engine.userName + "!");
-                break;
-            }
-
-            if (countAnswer >= MAX_RIGHT_ANSWERS) {
-                System.out.println("Congratulations, " + Engine.userName  + "!");
-                break;
+                return;
             }
         }
+
+        System.out.println("Congratulations, " + Engine.userName  + "!");
     }
 
     public static boolean doRound() {
