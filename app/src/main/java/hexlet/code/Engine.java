@@ -15,7 +15,7 @@ public class Engine {
         System.out.println(question);
     }
 
-    public static int getRandom (int min, int max) {
+    public static int getRandom(int min, int max) {
         return (int) (Math.random() * (max - min)) + min;
     }
 }

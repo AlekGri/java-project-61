@@ -8,6 +8,7 @@ public class Even {
 
     public static String userAnswer;
     public static String correctAnswer;
+    public static final int MAX_RANDOM_NUMBER = 100;
 
     public static void startGame() {
         Engine.greeting(QUESTION);
@@ -28,7 +29,7 @@ public class Even {
     }
 
     public static boolean doRound() {
-        int random = Engine.getRandom(1, 100);
+        int random = Engine.getRandom(1, MAX_RANDOM_NUMBER);
         System.out.println("Question: " + random);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);

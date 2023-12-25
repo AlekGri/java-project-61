@@ -31,8 +31,8 @@ public class Calc {
     public static boolean doRound() {
         int x = Engine.getRandom(1, MAX_RANDOM_NUMBER);
         int y = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        String[] Signs = {"+", "-", "*"};
-        String sign = Signs[Engine.getRandom(0, Signs.length)];
+        String[] signs = {"+", "-", "*"};
+        String sign = signs[Engine.getRandom(0, signs.length)];
         System.out.println("Question: " + x + " " + sign + " " + y);
 
         System.out.print("Your answer: ");
