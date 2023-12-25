@@ -14,7 +14,7 @@ public class Progression {
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
     private static String userAnswer;
-    private static int correctAnswer;
+    private static int rightAnswer;
     public static void startGame() {
         Engine.greeting(QUESTION);
 
@@ -24,7 +24,7 @@ public class Progression {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
                 System.out.println("Let's try again, " + Engine.getUserName() + "!");
                 return;
             }
@@ -56,9 +56,9 @@ public class Progression {
         Scanner scanner = new Scanner(System.in);
         userAnswer = scanner.next();
 
-        correctAnswer = progression[indexToHide];
+        rightAnswer = progression[indexToHide];
 
-        return userAnswer.equals(String.valueOf(correctAnswer));
+        return userAnswer.equals(String.valueOf(rightAnswer));
 
     }
 

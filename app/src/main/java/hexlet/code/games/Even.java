@@ -7,7 +7,7 @@ public class Even {
     public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     private static String userAnswer;
-    private static String correctAnswer;
+    private static String rightAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
 
     public static void startGame() {
@@ -19,7 +19,7 @@ public class Even {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
                 System.out.println("Let's try again, " + Engine.getUserName() + "!");
                 return;
             }
@@ -36,12 +36,12 @@ public class Even {
         userAnswer = scanner.next();
 
         boolean isRandomEven = isEven(random);
-        correctAnswer = "no";
+        rightAnswer = "no";
         if (isRandomEven) {
-            correctAnswer = "yes";
+            rightAnswer = "yes";
         }
 
-        return userAnswer.equals(correctAnswer);
+        return userAnswer.equals(rightAnswer);
     }
 
     public static boolean isEven(int num) {

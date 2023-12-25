@@ -8,7 +8,7 @@ public class Prime {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static String userAnswer;
-    private static String correctAnswer;
+    private static String rightAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
     public static void startGame() {
         Engine.greeting(QUESTION);
@@ -19,7 +19,7 @@ public class Prime {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
                 System.out.println("Let's try again, " + Engine.getUserName() + "!");
                 return;
             }
@@ -36,12 +36,12 @@ public class Prime {
         userAnswer = scanner.next();
 
         boolean isRandomPrime = isPrime(random);
-        correctAnswer = "no";
+        rightAnswer = "no";
         if (isRandomPrime) {
-            correctAnswer = "yes";
+            rightAnswer = "yes";
         }
 
-        return userAnswer.equals(correctAnswer);
+        return userAnswer.equals(rightAnswer);
     }
 
     public static boolean isPrime(int num) {
