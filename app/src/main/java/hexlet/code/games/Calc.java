@@ -44,11 +44,15 @@ public class Calc {
     }
 
     public static int calculate (int x, int y, String sign) {
-        return switch (sign) {
-            case "+" -> x + y;
-            case "-" -> x - y;
-            case "*" -> x * y;
-            default -> throw new IllegalStateException("Unexpected value: " + sign);
-        };
+        switch (sign) {
+            case "+":
+                return x + y;
+            case "-":
+                return x - y;
+            case "*":
+                return x * y;
+            default:
+                throw new RuntimeException("Unknown symbol");
+        }
     }
 }
