@@ -10,7 +10,7 @@ public class Calc {
     private static String userAnswer;
     private static int rightAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
-    public static void startGame() {
+    public static void startCalc() {
         Engine.greeting(QUESTION);
 
         for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {

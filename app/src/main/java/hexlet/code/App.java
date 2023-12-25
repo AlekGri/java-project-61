@@ -32,19 +32,19 @@ public class App {
                 Cli.getName();
                 break;
             case "2":
-                Even.startGame();
+                Even.startEven();
                 break;
             case "3":
-                Calc.startGame();
+                Calc.startCalc();
                 break;
             case "4":
-                GCD.startGame();
+                GCD.startGCD();
                 break;
             case "5":
-                Progression.startGame();
+                Progression.startProgression();
                 break;
             case "6":
-                Prime.startGame();
+                Prime.startPrime();
                 break;
             default:
                 System.out.println("Error: Not a valid game number");

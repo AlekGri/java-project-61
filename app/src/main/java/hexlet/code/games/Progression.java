@@ -15,7 +15,7 @@ public class Progression {
     public static final int MAX_START_NUMBER = 20;
     private static String userAnswer;
     private static int rightAnswer;
-    public static void startGame() {
+    public static void startProgression() {
         Engine.greeting(QUESTION);
 
         for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {

@@ -10,7 +10,7 @@ public class Even {
     private static String rightAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
 
-    public static void startGame() {
+    public static void startEven() {
         Engine.greeting(QUESTION);
 
         for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
