@@ -6,8 +6,8 @@ public class Even {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static String userAnswer;
-    public static String correctAnswer;
+    private static String userAnswer;
+    private static String correctAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
 
     public static void startGame() {

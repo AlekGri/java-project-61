@@ -13,8 +13,8 @@ public class Progression {
     public static final int MAX_STEP = 10;
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
-    public static String userAnswer;
-    public static int correctAnswer;
+    private static String userAnswer;
+    private static int correctAnswer;
     public static void startGame() {
         Engine.greeting(QUESTION);
 

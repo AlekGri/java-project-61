@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class GCD {
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Find the greatest common divisor of given numbers.";
-    public static String userAnswer;
-    public static int correctAnswer;
+    private static String userAnswer;
+    private static int correctAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
     public static void startGame() {
         Engine.greeting(QUESTION);
