@@ -32,7 +32,7 @@ public class Calc {
         int y = Engine.getRandom(1, 100);
         String[] Signs = {"+", "-", "*"};
         String sign = Signs[Engine.getRandom(0, Signs.length)];
-        System.out.println("Question: " + x + sign + y);
+        System.out.println("Question: " + x + " " + sign + " " + y);
 
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);
