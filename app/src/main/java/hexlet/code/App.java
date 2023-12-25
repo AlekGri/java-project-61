@@ -44,7 +44,7 @@ public class App {
                 break;
             default:
                 System.out.println("Error: Not a valid game number");
-            break;
+                break;
         }
         scanner.close();
     }
