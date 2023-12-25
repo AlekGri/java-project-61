@@ -24,8 +24,8 @@ public class Progression {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                        "Let's try again, " + Engine.userName + "!");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("Let's try again, " + Engine.userName + "!");
                 return;
             }
         }
@@ -62,7 +62,7 @@ public class Progression {
 
     }
 
-    public static int[] getProgression (int startNumber, int progressionLength, int step) {
+    public static int[] getProgression(int startNumber, int progressionLength, int step) {
         int[] progression = new int[progressionLength];
         for (int i = 0; i < progressionLength; i++) {
             progression[i] = startNumber + (i * step);

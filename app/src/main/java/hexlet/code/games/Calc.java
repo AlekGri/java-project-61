@@ -9,6 +9,7 @@ public class Calc {
     public static final String QUESTION = "What is the result of the expression?";
     public static String userAnswer;
     public static int correctAnswer;
+    public static final int MAX_RANDOM_NUMBER = 100;
     public static void startGame() {
         Engine.greeting(QUESTION);
 
@@ -18,8 +19,8 @@ public class Calc {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                        "Let's try again, " + Engine.userName + "!");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("Let's try again, " + Engine.userName + "!");
                 return;
             }
         }
@@ -28,8 +29,8 @@ public class Calc {
     }
 
     public static boolean doRound() {
-        int x = Engine.getRandom(1, 100);
-        int y = Engine.getRandom(1, 100);
+        int x = Engine.getRandom(1, MAX_RANDOM_NUMBER);
+        int y = Engine.getRandom(1, MAX_RANDOM_NUMBER);
         String[] Signs = {"+", "-", "*"};
         String sign = Signs[Engine.getRandom(0, Signs.length)];
         System.out.println("Question: " + x + " " + sign + " " + y);
@@ -43,7 +44,7 @@ public class Calc {
         return userAnswer.equals(String.valueOf(correctAnswer));
     }
 
-    public static int calculate (int x, int y, String sign) {
+    public static int calculate(int x, int y, String sign) {
         switch (sign) {
             case "+":
                 return x + y;

@@ -18,8 +18,8 @@ public class Even {
             if (roundResult) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                        "Let's try again, " + Engine.userName + "!");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                System.out.println("Let's try again, " + Engine.userName + "!");
                 return;
             }
         }
@@ -43,7 +43,7 @@ public class Even {
         return userAnswer.equals(correctAnswer);
     }
 
-    public static boolean isEven (int num) {
+    public static boolean isEven(int num) {
         return num % 2 == 0;
     }
 }
