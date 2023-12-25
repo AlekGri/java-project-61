@@ -20,12 +20,12 @@ public class Prime {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
-                System.out.println("Let's try again, " + Engine.userName + "!");
+                System.out.println("Let's try again, " + Engine.getUserName() + "!");
                 return;
             }
         }
 
-        System.out.println("Congratulations, " + Engine.userName  + "!");
+        System.out.println("Congratulations, " + Engine.getUserName()  + "!");
     }
 
     private static boolean doRound() {

@@ -3,7 +3,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static String userName;
+    private static String userName;
+    public static String getUserName() {
+        return userName;
+    }
 
     public static void greeting(String question) {
         System.out.println("Welcome to the Brain Games!");
@@ -19,3 +22,4 @@ public class Engine {
         return (int) (Math.random() * (max - min)) + min;
     }
 }
+
