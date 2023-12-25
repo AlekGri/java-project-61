@@ -7,7 +7,6 @@ public class Engine {
     public static String getUserName() {
         return userName;
     }
-
     public static void greeting(String question) {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
