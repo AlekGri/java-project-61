@@ -12,7 +12,7 @@ public class Even {
     public static void startGame() {
         Engine.greeting(QUESTION);
 
-        for (int i = 1; i <= MAX_RIGHT_ANSWERS; i++) {
+        for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
             boolean roundResult = doRound();
 
             if (roundResult) {
