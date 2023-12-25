@@ -42,6 +42,9 @@ public class App {
             case "6":
                 Prime.startGame();
                 break;
+            default:
+                System.out.println("Error: Not a valid game number");
+            break;
         }
         scanner.close();
     }
