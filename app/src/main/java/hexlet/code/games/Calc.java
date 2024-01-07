@@ -12,36 +12,20 @@ public class Calc {
     public static final int MAX_RANDOM_NUMBER = 100;
     public static void startCalc() {
         Engine.greeting(QUESTION);
+        String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
-        for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
-            boolean roundResult = doRound();
-
-            if (roundResult) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
-                System.out.println("Let's try again, " + Engine.getUserName() + "!");
-                return;
-            }
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int x = Engine.getRandom(1, MAX_RANDOM_NUMBER);
+            int y = Engine.getRandom(1, MAX_RANDOM_NUMBER);
+            String[] signs = {"+", "-", "*"};
+            String sign = signs[Engine.getRandom(0, signs.length)];
+            questionsAndAnswers[i][Engine.QUESTIONS_ROW] = x + " " + sign + " " + y;
+            //запись ответа
+            int rightAnswer = calculate(x, y, sign);
+            questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(rightAnswer);
         }
 
-        System.out.println("Congratulations, " + Engine.getUserName()  + "!");
-    }
-
-    public static boolean doRound() {
-        int x = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        int y = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        String[] signs = {"+", "-", "*"};
-        String sign = signs[Engine.getRandom(0, signs.length)];
-        System.out.println("Question: " + x + " " + sign + " " + y);
-
-        System.out.print("Your answer: ");
-        Scanner scanner = new Scanner(System.in);
-        userAnswer = scanner.next();
-
-        rightAnswer = calculate(x, y, sign);
-
-        return userAnswer.equals(String.valueOf(rightAnswer));
+        Engine.doRound(questionsAndAnswers);
     }
 
     public static int calculate(int x, int y, String sign) {
