@@ -20,7 +20,8 @@ public class Progression {
             int[] progression = getProgression(startNumber, progressionLength, step);
 
             int indexToHide = Engine.getRandom(0, progressionLength - 1);
-
+            String question = hideIndex(progression, indexToHide);
+            /*
             var question = new StringBuilder();
             for (int j = 0; j < progressionLength; j++) {
                 if (j == indexToHide) {
@@ -30,6 +31,7 @@ public class Progression {
                     question.append(" ");
                 }
             }
+            */
             questionsAndAnswers[i][Engine.QUESTIONS_ROW] = String.valueOf(question);
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(progression[indexToHide]);
         }
@@ -43,5 +45,18 @@ public class Progression {
         }
 
         return progression;
+    }
+
+    public static String hideIndex(int[] progression, int indexToHide) {
+        var question = new StringBuilder();
+        for (int i = 0; i < progression.length; i++) {
+            if (i == indexToHide) {
+                question.append(".. ");
+            } else {
+                question.append(progression[i]);
+                question.append(" ");
+            }
+        }
+        return String.valueOf(question);
     }
 }
