@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Prime {
     public static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void startPrime() {
