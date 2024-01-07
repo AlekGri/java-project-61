@@ -5,43 +5,18 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Prime {
-    public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private static String userAnswer;
-    private static String rightAnswer;
-    public static final int MAX_RANDOM_NUMBER = 100;
     public static void startPrime() {
         Engine.greeting(QUESTION);
+        String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
-        for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
-            boolean roundResult = doRound();
-
-            if (roundResult) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
-                System.out.println("Let's try again, " + Engine.getUserName() + "!");
-                return;
-            }
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int random = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
+            questionsAndAnswers[i][Engine.QUESTIONS_ROW] = String.valueOf(random);
+            questionsAndAnswers[i][Engine.ANSWERS_ROW] = (isPrime(random)) ? "yes" : "no";
         }
 
-        System.out.println("Congratulations, " + Engine.getUserName()  + "!");
-    }
-
-    private static boolean doRound() {
-        int random = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        System.out.println("Question: " + random);
-        System.out.print("Your answer: ");
-        Scanner scanner = new Scanner(System.in);
-        userAnswer = scanner.next();
-
-        boolean isRandomPrime = isPrime(random);
-        rightAnswer = "no";
-        if (isRandomPrime) {
-            rightAnswer = "yes";
-        }
-
-        return userAnswer.equals(rightAnswer);
+        Engine.doRound(questionsAndAnswers);
     }
 
     public static boolean isPrime(int num) {

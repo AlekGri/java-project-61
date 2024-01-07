@@ -8,6 +8,8 @@ public class Engine {
         return userName;
     }
     public static final int MAX_RIGHT_ANSWERS = 3;
+    public static final int MAX_RANDOM_NUMBER = 100;
+
     public static final int QUESTIONS_ROW = 0;
     public static final int ANSWERS_ROW = 1;
     public static void greeting(String question) {
