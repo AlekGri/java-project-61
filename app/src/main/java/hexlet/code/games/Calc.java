@@ -4,14 +4,13 @@ import hexlet.code.Engine;
 
 public class Calc {
     public static final String QUESTION = "What is the result of the expression?";
-    public static final int MAX_RANDOM_NUMBER = 100;
     public static void startCalc() {
         Engine.greeting(QUESTION);
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            int x = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-            int y = Engine.getRandom(1, MAX_RANDOM_NUMBER);
+            int x = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
+            int y = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
             String[] signs = {"+", "-", "*"};
             String sign = signs[Engine.getRandom(0, signs.length)];
             questionsAndAnswers[i][Engine.QUESTIONS_ROW] = x + " " + sign + " " + y;

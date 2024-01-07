@@ -2,48 +2,25 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class GCD {
-    public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "Find the greatest common divisor of given numbers.";
-    private static String userAnswer;
-    private static int rightAnswer;
-    public static final int MAX_RANDOM_NUMBER = 100;
     public static void startGCD() {
         Engine.greeting(QUESTION);
+        String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
-        for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
-            boolean roundResult = doRound();
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int firstNum = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
+            int secondNum = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
 
-            if (roundResult) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
-                System.out.println("Let's try again, " + Engine.getUserName() + "!");
-                return;
+            while (firstNum == secondNum) {
+                secondNum = Engine.getRandom(1, Engine.MAX_RANDOM_NUMBER);
             }
+            questionsAndAnswers[i][Engine.QUESTIONS_ROW] = firstNum + " " + secondNum;
+            //запись ответа
+            int rightAnswer = getGCD(firstNum, secondNum);
+            questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(rightAnswer);
         }
-
-        System.out.println("Congratulations, " + Engine.getUserName()  + "!");
-    }
-
-    public static boolean doRound() {
-        int firstNum = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        int secondNum = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-
-        while (firstNum == secondNum) {
-            secondNum = Engine.getRandom(1, MAX_RANDOM_NUMBER);
-        }
-
-        System.out.println("Question: " + firstNum + " " + secondNum);
-        System.out.print("Your answer: ");
-        Scanner scanner = new Scanner(System.in);
-        userAnswer = scanner.next();
-
-        rightAnswer = getGCD(firstNum, secondNum);
-
-        return userAnswer.equals(String.valueOf(rightAnswer));
+        Engine.doRound(questionsAndAnswers);
     }
 
     public static int getGCD(int x, int y) {
@@ -59,6 +36,5 @@ public class GCD {
             y = remainder;
         }
         return x;
-
     }
 }
