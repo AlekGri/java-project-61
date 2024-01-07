@@ -2,10 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Progression {
-    public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "What number is missing in the progression?";
     public static final int MIN_LENGTH = 5;
     public static final int MAX_LENGTH = 14;
@@ -13,53 +10,33 @@ public class Progression {
     public static final int MAX_STEP = 10;
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
-    private static String userAnswer;
-    private static int rightAnswer;
     public static void startProgression() {
         Engine.greeting(QUESTION);
 
-        for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
-            boolean roundResult = doRound();
+        String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
-            if (roundResult) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
-                System.out.println("Let's try again, " + Engine.getUserName() + "!");
-                return;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int startNumber = Engine.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
+            int progressionLength = Engine.getRandom(MIN_LENGTH, MAX_LENGTH);
+            int step = Engine.getRandom(MIN_STEP, MAX_STEP);
+            int[] progression = getProgression(startNumber, progressionLength, step);
+
+            int indexToHide = Engine.getRandom(0, progressionLength - 1);
+
+            var question = new StringBuilder();
+            for (int j = 0; j < progressionLength; j++) {
+                if (j == indexToHide) {
+                    question.append(".. ");
+                } else {
+                    question.append(progression[j]);
+                    question.append(" ");
+                }
             }
+            questionsAndAnswers[i][Engine.QUESTIONS_ROW] = String.valueOf(question);
+            //запись ответа
+            questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(progression[indexToHide]);
         }
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
-    }
-
-    public static boolean doRound() {
-        int startNumber = Engine.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
-        int progressionLength = Engine.getRandom(MIN_LENGTH, MAX_LENGTH);
-        int step = Engine.getRandom(MIN_STEP, MAX_STEP);
-        int[] progression = getProgression(startNumber, progressionLength, step);
-
-        int indexToHide = Engine.getRandom(0, progressionLength - 1);
-
-        var question = new StringBuilder();
-        question.append("Question: ");
-        for (int i = 0; i < progressionLength; i++) {
-            if (i == indexToHide) {
-                question.append(".. ");
-            } else {
-                question.append(progression[i]);
-                question.append(" ");
-            }
-        }
-        System.out.println(question);
-        System.out.print("Your answer: ");
-        Scanner scanner = new Scanner(System.in);
-        userAnswer = scanner.next();
-
-        rightAnswer = progression[indexToHide];
-
-        return userAnswer.equals(String.valueOf(rightAnswer));
-
+        Engine.doRound(questionsAndAnswers);
     }
 
     public static int[] getProgression(int startNumber, int progressionLength, int step) {
