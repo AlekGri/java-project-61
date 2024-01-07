@@ -5,7 +5,6 @@ import hexlet.code.Engine;
 public class Calc {
     public static final String QUESTION = "What is the result of the expression?";
     public static void startCalc() {
-        Engine.greeting(QUESTION);
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
@@ -14,12 +13,11 @@ public class Calc {
             String[] signs = {"+", "-", "*"};
             String sign = signs[Engine.getRandom(0, signs.length)];
             questionsAndAnswers[i][Engine.QUESTIONS_ROW] = x + " " + sign + " " + y;
-            //запись ответа
             int rightAnswer = calculate(x, y, sign);
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(rightAnswer);
         }
 
-        Engine.doRound(questionsAndAnswers);
+        Engine.doRound(QUESTION, questionsAndAnswers);
     }
 
     public static int calculate(int x, int y, String sign) {

@@ -11,8 +11,6 @@ public class Progression {
     public static final int MIN_START_NUMBER = 1;
     public static final int MAX_START_NUMBER = 20;
     public static void startProgression() {
-        Engine.greeting(QUESTION);
-
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
@@ -33,10 +31,9 @@ public class Progression {
                 }
             }
             questionsAndAnswers[i][Engine.QUESTIONS_ROW] = String.valueOf(question);
-            //запись ответа
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(progression[indexToHide]);
         }
-        Engine.doRound(questionsAndAnswers);
+        Engine.doRound(QUESTION, questionsAndAnswers);
     }
 
     public static int[] getProgression(int startNumber, int progressionLength, int step) {

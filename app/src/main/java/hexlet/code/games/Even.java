@@ -5,7 +5,6 @@ public class Even {
     public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void startEven() {
-        Engine.greeting(QUESTION);
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
@@ -14,7 +13,7 @@ public class Even {
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = (isEven(random)) ? "yes" : "no";
         }
 
-        Engine.doRound(questionsAndAnswers);
+        Engine.doRound(QUESTION, questionsAndAnswers);
     }
 
     public static boolean isEven(int num) {

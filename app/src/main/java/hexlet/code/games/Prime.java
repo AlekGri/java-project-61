@@ -5,7 +5,6 @@ import hexlet.code.Engine;
 public class Prime {
     public static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void startPrime() {
-        Engine.greeting(QUESTION);
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
@@ -14,7 +13,7 @@ public class Prime {
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = (isPrime(random)) ? "yes" : "no";
         }
 
-        Engine.doRound(questionsAndAnswers);
+        Engine.doRound(QUESTION, questionsAndAnswers);
     }
 
     public static boolean isPrime(int num) {

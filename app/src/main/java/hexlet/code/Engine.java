@@ -12,7 +12,8 @@ public class Engine {
 
     public static final int QUESTIONS_ROW = 0;
     public static final int ANSWERS_ROW = 1;
-    public static void greeting(String question) {
+
+    public static void doRound(String question, String[][] questionsAndAnswers) {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
         Scanner scanner = new Scanner(System.in);
@@ -20,13 +21,10 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
 
         System.out.println(question);
-    }
 
-    public static void doRound(String[][] questionsAndAnswers) {
         for (int i = 0; i < MAX_RIGHT_ANSWERS; i++) {
             System.out.println("Question: " + questionsAndAnswers[i][QUESTIONS_ROW]);
             System.out.print("Your answer: ");
-            Scanner scanner = new Scanner(System.in);
             String userAnswer = scanner.next();
 
             if (userAnswer.equals(questionsAndAnswers[i][ANSWERS_ROW])) {
@@ -38,6 +36,7 @@ public class Engine {
                 return;
             }
         }
+        scanner.close();
         System.out.println("Congratulations, " + Engine.getUserName()  + "!");
     }
 
