@@ -2,13 +2,8 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Calc {
-    public static final int MAX_RIGHT_ANSWERS = 3;
     public static final String QUESTION = "What is the result of the expression?";
-    private static String userAnswer;
-    private static int rightAnswer;
     public static final int MAX_RANDOM_NUMBER = 100;
     public static void startCalc() {
         Engine.greeting(QUESTION);
