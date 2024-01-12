@@ -3,10 +3,6 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static String userName;
-    public static String getUserName() {
-        return userName;
-    }
     public static final int MAX_RIGHT_ANSWERS = 3;
     public static final int MAX_RANDOM_NUMBER = 100;
 
@@ -17,7 +13,7 @@ public class Engine {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
         Scanner scanner = new Scanner(System.in);
-        userName = scanner.next();
+        String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
         System.out.println(question);
@@ -32,16 +28,12 @@ public class Engine {
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. "
                         + "Correct answer was '" + questionsAndAnswers[i][ANSWERS_ROW] + "'");
-                System.out.println("Let's try again, " + Engine.getUserName() + "!");
+                System.out.println("Let's try again, " + userName + "!");
                 return;
             }
         }
         scanner.close();
-        System.out.println("Congratulations, " + Engine.getUserName()  + "!");
-    }
-
-    public static int getRandom(int min, int max) {
-        return (int) (Math.random() * (max - min)) + min;
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
 

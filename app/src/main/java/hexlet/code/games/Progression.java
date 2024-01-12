@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Progression {
     public static final String QUESTION = "What number is missing in the progression?";
@@ -14,24 +15,14 @@ public class Progression {
         String[][] questionsAndAnswers = new String[Engine.MAX_RIGHT_ANSWERS][2];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            int startNumber = Engine.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
-            int progressionLength = Engine.getRandom(MIN_LENGTH, MAX_LENGTH);
-            int step = Engine.getRandom(MIN_STEP, MAX_STEP);
+            int startNumber = Util.getRandom(MIN_START_NUMBER, MAX_START_NUMBER);
+            int progressionLength = Util.getRandom(MIN_LENGTH, MAX_LENGTH);
+            int step = Util.getRandom(MIN_STEP, MAX_STEP);
             int[] progression = getProgression(startNumber, progressionLength, step);
 
-            int indexToHide = Engine.getRandom(0, progressionLength - 1);
+            int indexToHide = Util.getRandom(0, progressionLength - 1);
             String question = hideIndex(progression, indexToHide);
-            /*
-            var question = new StringBuilder();
-            for (int j = 0; j < progressionLength; j++) {
-                if (j == indexToHide) {
-                    question.append(".. ");
-                } else {
-                    question.append(progression[j]);
-                    question.append(" ");
-                }
-            }
-            */
+
             questionsAndAnswers[i][Engine.QUESTIONS_ROW] = String.valueOf(question);
             questionsAndAnswers[i][Engine.ANSWERS_ROW] = String.valueOf(progression[indexToHide]);
         }
